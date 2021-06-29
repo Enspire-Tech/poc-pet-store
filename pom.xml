@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.boomi.connector</groupId>
+    <artifactId>petstore</artifactId>
+    <version>0.1</version>
+    <name>Pet Store</name>
+    <packaging>jar</packaging>
+
+
+    <properties>
+        <!-- Specify what boomi SDK version we want -->
+        <boomi.sdk.version>2.9.5</boomi.sdk.version>
+        <!-- Boomi Utilities for ease of development -->
+        <boomi.util>2.3.8</boomi.util>
+    </properties>
+
+    <dependencies>
+        <!--  Boomi Dependencies -->
+        <dependency>
+            <groupId>com.boomi.connsdk</groupId>
+            <artifactId>connector-sdk-api</artifactId>
+            <version>${boomi.sdk.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.boomi.connsdk</groupId>
+            <artifactId>connector-sdk-model</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.boomi.connsdk</groupId>
+            <artifactId>connector-sdk-util</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.boomi.commonsdk</groupId>
+            <artifactId>common-sdk</artifactId>
+            <version>1.1.9</version>
+        </dependency>
+        <dependency>
+            <groupId>com.boomi.connsdk</groupId>
+            <artifactId>connector-sdk-rest</artifactId>
+            <version>0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.boomi.connsdk</groupId>
+            <artifactId>connector-sdk-openapi</artifactId>
+            <version>0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.boomi.connsdk</groupId>
+            <artifactId>connector-sdk-test-util</artifactId>
+            <version>2.9.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.boomi.execution</groupId>
+            <artifactId>executionutil</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/deps/executionUtil.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.boomi.util</groupId>
+            <artifactId> boomi-json-util</artifactId>
+            <version>1.1.9</version>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>attached</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <!-- Specification of the Boomi SDK repository --> 
+    <repositories>
+        <repository>
+            <id>boomisdk</id>
+            <name>Connector SDK Repository</name>
+            <url>https://boomisdk.s3.amazonaws.com/releases</url>
+        </repository>
+        <repository>
+            <id>archetype</id>
+            <url>https://boomisdk.s3.amazonaws.com/releases</url>
+        </repository>
+    </repositories>
+
+</project>

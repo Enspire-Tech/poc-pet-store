@@ -1,0 +1,3 @@
+<GenericConnector sdkApiVersion="2.2.0">
+    <connectorClassName>com.boomi.connector.pet_store</connectorClassName>
+</GenericConnector>
