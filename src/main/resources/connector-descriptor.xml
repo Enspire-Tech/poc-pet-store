@@ -1,12 +1,31 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <GenericConnectorDescriptor
-    browsingType="any"
-    requireConnectionForBrowse="false">
-    <description>Pet Store POC OpenAPI Connector</description>
-    <field id="url" label="URL" type="string">
-        <helpText>The base url for the Pet Store service</helpText>
-        <defaultValue>https://petstore3.swagger.io/api/v3</defaultValue>
+        onPremiseBrowseOnly="false"
+        dateTimeFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ"
+        requireConnectionForBrowse="true">
+    <description/>
+    <field id="URL" label="URL" type="string">
+        <helpText>The URL for the Petstore service</helpText>
+        <defaultValue>https://petstore.swagger.io</defaultValue>
     </field>
+    <testConnection method="CUSTOM"/>
 
-    <operation types="GET|UPDATE|CREATE"/>
+    <operation types="EXECUTE" customTypeId="CREATE" customTypeLabel="CREATE"/>
+    <operation types="EXECUTE" customTypeId="UPDATE" customTypeLabel="UPDATE"/>
+    <operation types="EXECUTE" customTypeId="GET" customTypeLabel="GET"/>
+    <operation types="EXECUTE" customTypeId="DELETE" customTypeLabel="DELETE"/>
+
+    <!-- Query only works if there are no IDs in the restful path because currently Query Operation Shapes will no accept input parameters -->
+    <!-- For example /invoices/{invoice id}/lineitems is a valid scenerio for query but it can not be implemented today with the SDK, a custom EXECUTE/GET must be used -->
+    <!-- grouping = none | any -->
+    <operation types="QUERY" allowFieldSelection="false" fieldSelectionLevels="0" fieldSelectionNone="true">
+        <!-- grouping = none | any | noNestingImplicitOr | noNestingImplicitAnd | noNestingImplicitAnd | singleNestingImplicitOr | singleNestingImplicitAnd -->
+        <!-- sorting =none | one | unbounded -->
+        <queryFilter grouping="none" sorting="none">
+            <operator id="eq" label="Equal To">
+                <supportedType type="string" />
+            </operator>
+        </queryFilter>
+    </operation>
+    <dynamicProperty type="string" id="EXTRAURIPARAMS" label="Additional URI Query Parameters"/>
 </GenericConnectorDescriptor>
