@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<GenericConnectorDescriptor
+    browsingType="any"
+    requireConnectionForBrowse="false">
+    <description>Pet Store POC OpenAPI Connector</description>
+    <field id="url" label="URL" type="string">
+        <helpText>The base url for the Pet Store service</helpText>
+        <defaultValue>https://petstore3.swagger.io/api/v3</defaultValue>
+    </field>
+
+    <operation types="GET|UPDATE|CREATE"/>
+</GenericConnectorDescriptor>

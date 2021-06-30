@@ -1,4 +1,4 @@
-package com.boomi.connector.pet_store;
+package com.boomi.connector.petstore;
 
 import java.util.logging.Logger;
 import com.boomi.connector.api.BrowseContext;
@@ -10,12 +10,6 @@ public class PetStoreConnection extends OpenAPIConnection {
 
     public PetStoreConnection(BrowseContext context) {
         super(context);
-    }
-
-    @Override
-    public String getSpec()
-    {
-        return "src/main/resources/boomi_flow/openapi.json";
     }
 
 }

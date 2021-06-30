@@ -52,6 +52,17 @@
             <version>0.1</version>
         </dependency>
         <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.4.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.boomi.util</groupId>
+            <artifactId>boomi-json-util</artifactId>
+            <version>1.1.9</version>
+        </dependency>
+        <dependency>
             <groupId>com.boomi.connsdk</groupId>
             <artifactId>connector-sdk-test-util</artifactId>
             <version>2.9.0</version>
@@ -63,11 +74,6 @@
             <version>1.0</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/deps/executionUtil.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>com.boomi.util</groupId>
-            <artifactId> boomi-json-util</artifactId>
-            <version>1.1.9</version>
         </dependency>
 
     </dependencies>
@@ -92,17 +98,4 @@
             </plugin>
         </plugins>
     </build>
-    <!-- Specification of the Boomi SDK repository --> 
-    <repositories>
-        <repository>
-            <id>boomisdk</id>
-            <name>Connector SDK Repository</name>
-            <url>https://boomisdk.s3.amazonaws.com/releases</url>
-        </repository>
-        <repository>
-            <id>archetype</id>
-            <url>https://boomisdk.s3.amazonaws.com/releases</url>
-        </repository>
-    </repositories>
-
 </project>
